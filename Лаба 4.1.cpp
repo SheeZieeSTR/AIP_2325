@@ -5,7 +5,7 @@ using namespace std;
 
 
 ostream& message(ostream& os) {
-    return os << "Это пользовательское сообщение.";
+    return os << "Результат:";
 }
 
 
