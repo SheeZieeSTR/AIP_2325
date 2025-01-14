@@ -6,7 +6,6 @@
 
 using namespace std;
 
-// Функция для генерации и записи случайных чисел в файл
 void generate_input_file(const string& filename) {
     ofstream input_file(filename);
     
@@ -15,18 +14,16 @@ void generate_input_file(const string& filename) {
         return;
     }
     
-    srand(time(0));  // Инициализация генератора случайных чисел
+    srand(time(0));  
     
-    // Запись 100 случайных целых чисел от -50 до +50
     for (int i = 0; i < 100; ++i) {
-        int random_number = rand() % 101 - 50;  // Генерация числа от -50 до 50
+        int random_number = rand() % 101 - 50;  
         input_file << random_number << endl;
     }
     
     input_file.close();
 }
 
-// Функция для преобразования чисел и записи в выходной файл
 void transform_and_write_output_file(const string& input_filename, const string& output_filename) {
     ifstream input_file(input_filename);
     ofstream output_file(output_filename);
@@ -39,12 +36,10 @@ void transform_and_write_output_file(const string& input_filename, const string&
     vector<int> numbers;
     int num;
     
-    // Чтение чисел из входного файла
     while (input_file >> num) {
         numbers.push_back(num);
     }
     
-    // Найдем первое отрицательное число и 50-е число
     int first_negative = 0;
     int fiftieth = 0;
     
@@ -62,10 +57,8 @@ void transform_and_write_output_file(const string& input_filename, const string&
         return;
     }
     
-    // Полусумма первого отрицательного числа и 50-го числа
     double half_sum = (first_negative + fiftieth) / 2.0;
     
-    // Преобразование и запись чисел в выходной файл
     for (int i = 0; i < numbers.size(); ++i) {
         output_file << numbers[i] / half_sum << endl;
     }
@@ -78,10 +71,8 @@ int main() {
     string input_filename = "input.txt";
     string output_filename = "output.txt";
     
-    // Генерация входного файла
     generate_input_file(input_filename);
     
-    // Преобразование данных и запись в выходной файл
     transform_and_write_output_file(input_filename, output_filename);
     
     cout << "Программа завершена. Результаты записаны в файл " << output_filename << endl;
