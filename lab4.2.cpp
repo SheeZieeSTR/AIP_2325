@@ -10,7 +10,7 @@ using namespace std;
 void generateInputFile(const string& filename) {
     ofstream outFile(filename);
     if (!outFile) {
-        throw runtime_error("Unable to open input file for writing");
+        throw runtime_error("Невозможно открыть файл ввода для записи");
     }
 
     srand(static_cast<unsigned>(time(nullptr)));
@@ -25,7 +25,7 @@ void generateInputFile(const string& filename) {
 void processFiles(const string& inputFilename, const string& outputFilename) {
     ifstream inFile(inputFilename);
     if (!inFile) {
-        throw runtime_error("Unable to open input file for reading");
+        throw runtime_error("Невозможно открыть файл ввода для чтения");
     }
 
     vector<int> numbers;
@@ -44,12 +44,12 @@ void processFiles(const string& inputFilename, const string& outputFilename) {
     inFile.close();
 
     if (!foundFirstOdd) {
-        throw runtime_error("No odd number found in the input file");
+        throw runtime_error("В вводном файле не найдено нечётных чисел");
     }
 
     ofstream outFile(outputFilename);
     if (!outFile) {
-        throw runtime_error("Unable to open output file for writing");
+        throw runtime_error("Невозможно открыть файл вывода для записи");
     }
 
     for (int num : numbers) {
@@ -60,6 +60,8 @@ void processFiles(const string& inputFilename, const string& outputFilename) {
 }
 
 int main() {
+    setlocale(LC_ALL, "Russian");
+    
     const string inputFilename = "input.txt";
     const string outputFilename = "output.txt";
 
@@ -68,9 +70,9 @@ int main() {
         
         processFiles(inputFilename, outputFilename);
 
-        cout << "Processing complete. Check '" << outputFilename << "' for results." << endl;
+        cout << "Обработка завершена. Проверьте '" << outputFilename << "', чтобы посмотреть результат." << endl;
     } catch (const exception& e) {
-        cerr << "Error: " << e.what() << endl;
+        cerr << "Ошибка: " << e.what() << endl;
     }
 
     return 0;
