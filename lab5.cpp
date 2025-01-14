@@ -51,7 +51,7 @@ namespace containers {
             } else if (value > node->value) {
                 insertValue(node->right, value);
             } else {
-                throw CustomException("Duplicate value not allowed in BinaryTree");
+                throw CustomException("Повторяющееся значение не допускается в BinaryTree");
             }
         }
 
@@ -134,7 +134,7 @@ namespace containers {
 
             T next() override {
                 if (stack.empty()) {
-                    throw CustomException("No more elements in InOrderIterator");
+                    throw CustomException("В InOrderIterator больше нет элементов");
                 }
 
                 Node* current = stack.top();
@@ -161,7 +161,7 @@ namespace containers {
 
             T next() override {
                 if (queue.empty()) {
-                    throw CustomException("No more elements in LevelOrderIterator");
+                    throw CustomException("В LevelOrderIterator больше нет элементов");
                 }
 
                 Node* current = queue.front();
@@ -176,14 +176,14 @@ namespace containers {
 
         unique_ptr<IteratorInterface> getInOrderIterator() {
             if (!root) {
-                throw CustomException("Cannot create iterator for empty BinaryTree");
+                throw CustomException("Невозможно создать итератор для пустого BinaryTree");
             }
             return make_unique<InOrderIterator>(root.get());
         }
 
         unique_ptr<IteratorInterface> getLevelOrderIterator() {
             if (!root) {
-                throw CustomException("Cannot create iterator for empty BinaryTree");
+                throw CustomException("Невозможно создать итератор для пустого BinaryTree");
             }
             return make_unique<LevelOrderIterator>(root.get());
         }
@@ -191,6 +191,8 @@ namespace containers {
 }
 
 int main() {
+    setlocale(LC_ALL, "Russian");
+    
     using namespace containers;
 
     try {
