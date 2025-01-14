@@ -27,8 +27,8 @@ double calculate_z1(double x) {
             throw CustomException("Square root of a negative number encountered in Z1", x, 101);
         }
 
-        double numerator = x * x + 2 * x - 3 + (x + 1) * std::sqrt(x * x - 9);
-        double denominator = x * x - 2 * x - 3 + (x - 1) * std::sqrt(x * x - 9);
+        double numerator = x * x + 2 * x - 3 + (x + 1) * sqrt(x * x - 9);
+        double denominator = x * x - 2 * x - 3 + (x - 1) * sqrt(x * x - 9);
 
         if (denominator == 0) {
             throw CustomException("Division by zero encountered in Z1", x, 102);
