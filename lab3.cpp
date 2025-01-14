@@ -47,7 +47,7 @@ namespace containers {
             } else if (value > node->value) {
                 insertValue(node->right, value);
             } else {
-                throw invalid_argument("Duplicate value not allowed in BinaryTree");
+                throw invalid_argument("Повторяющееся значение не допускается в BinaryTree");
             }
         }
 
@@ -123,6 +123,8 @@ namespace containers {
 }
 
 int main() {
+    setlocale(LC_ALL, "Russian");
+    
     using namespace containers;
 
     try {
@@ -130,7 +132,7 @@ int main() {
         intTree.display();
         intTree.insert(9);
         intTree.display();
-        cout << "Find 6: " << (intTree.find(6) ? "Found" : "Not Found") << endl;
+        cout << "Найти 6: " << (intTree.find(6) ? "Найдено" : "Не найдено") << endl;
 
         BinaryTree<double> doubleTree = {1.1, 2.2, 3.3, 4.4};
         doubleTree.display();
