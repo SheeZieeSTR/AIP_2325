@@ -1,6 +1,4 @@
 Vect.h 
-
-
 #ifndef VECT_H
 #define VECT_H
 
